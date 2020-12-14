@@ -1,0 +1,8 @@
+CORE.PY
+
+- [] initialize pygame
+- [] setup the core
+- [] set caption
+- [] inf. loop 
+- [] exits
+- [] display update
