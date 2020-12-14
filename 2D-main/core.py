@@ -22,6 +22,5 @@ while r:
 
 	
 	pygame.display.update()
-	pygame.display.flip()
 
 pygame.quit
