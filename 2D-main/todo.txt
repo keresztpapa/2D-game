@@ -1,15 +1,19 @@
 CORE.PY
 
-- [] initialize pygame
+- [+] initialize pygame
 - [] setup the core
-- [] set caption
-- [] inf. loop 
-- [] exits
-- [] display update
+- [+] set caption
+- [+] inf. loop 
+- [+] exits
+- [+] display update
+- [] 
 
-
+OPENING.PY
 
 - [] ÜRES OLDAL -> DOBOZOK ( NEW GAME / LOAD GAME)
+- [+] dinamikusan dobálja a main ből (szöveg, pozició)
+- [+] DRAW BOX
+- [+] TEXT KEZELÉS
 - [] NEW GAME -> CHOOSE CHAR
 
 

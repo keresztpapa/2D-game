@@ -1,3 +1,5 @@
+#hogy ne kelljen kipróbáláshoz létrehozni mindeig külön filet, ennek a tartalma nem számit
+
 def addxy(x , y):
     return x+y
 

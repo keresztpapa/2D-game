@@ -9,8 +9,13 @@ win = pygame.display.set_mode((constans.WIN_X, constans.WIN_Y))
 pygame.display.set_caption(" The Hobblyat ")
 
 opening.show(win)
-opening.text_show(win,constans.WIN_X/3,constans.WIN_Y/2,"helo 1/3")
-opening.text_show(win,(constans.WIN_X/3)*2,constans.WIN_Y/2,"helo 2/3")
+#opening.text_show(win,constans.WIN_X/3,constans.WIN_Y/2,"helo 1/3")
+#opening.text_show(win,(constans.WIN_X/3)*2,constans.WIN_Y/2,"helo 2/3")
+opening.draw_box(win,constans.BLACK,constans.WIN_X/3,constans.WIN_Y/3,100,200,"hello")
+opening.draw_box(win,constans.BLACK,(constans.WIN_X/3)*2,constans.WIN_Y/3,100,200,"hello")
+
+
+
 
 def play():
 	r = True
@@ -29,3 +34,4 @@ def play():
 
 		pygame.display.update()
 	pygame.quit
+	quit()
