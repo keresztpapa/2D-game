@@ -6,3 +6,16 @@ CORE.PY
 - [] inf. loop 
 - [] exits
 - [] display update
+- [] 
+
+OPENING.PY
+
+- [] ÜRES OLDAL -> DOBOZOK ( NEW GAME / LOAD GAME)
+- [] NEW GAME -> CHOOSE CHAR
+
+
+CHARS.PY
+
+- [] constructor
+- [] stats ( X, Y, HP, DMG, PÉNZ, SPRITE)
+- [] mozgás
