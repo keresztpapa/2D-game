@@ -1,26 +1,31 @@
 import pygame
-import os
+import opening
+import constans
 pygame.init()
 
+#kép init
+win = pygame.display.set_mode((constans.WIN_X, constans.WIN_Y))
+#window cím
+pygame.display.set_caption(" The Hobblyat ")
 
-win = pygame.display.set_mode((900, 640))
-pygame.display.set_caption("{set_caption}")
+opening.show(win)
+opening.text_show(win,constans.WIN_X/3,constans.WIN_Y/2,"helo 1/3")
+opening.text_show(win,(constans.WIN_X/3)*2,constans.WIN_Y/2,"helo 2/3")
+
+def play():
+	r = True
+	while r:
+		pygame.time.delay(100)
+
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				r = False
 
 
-r = True
-while r:
-	pygame.time.delay(100)
-
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
+		key = pygame.key.get_pressed()
+		if key[pygame.K_ESCAPE]:
 			r = False
 
 
-	key = pygame.key.get_pressed()
-	if key[pygame.K_ESCAPE]:
-		r = False
-
-	
-	pygame.display.update()
-
-pygame.quit
+		pygame.display.update()
+	pygame.quit

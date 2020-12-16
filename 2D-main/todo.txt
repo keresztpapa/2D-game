@@ -6,9 +6,8 @@ CORE.PY
 - [] inf. loop 
 - [] exits
 - [] display update
-- [] 
 
-OPENING.PY
+
 
 - [] ÜRES OLDAL -> DOBOZOK ( NEW GAME / LOAD GAME)
 - [] NEW GAME -> CHOOSE CHAR
