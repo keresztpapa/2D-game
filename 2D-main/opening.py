@@ -39,10 +39,22 @@ def draw_box(window, colour, left, top, width, height,str):
     pygame.draw.rect(window,colour,(left, top, width, height))
     text_show(window, left + width/2, top + height-180,str)
     pygame.display.update()
-    time.sleep(5)
+#    time.sleep(5)
 
 
 # kezdő felület
 #argumentumok ABLAK || ANNAK A SZINE
-def open(window):
-    return 0
+def open(win):
+    r = True
+#végtelen cilusba a klikk ig
+    while r:
+        show(win)
+        draw_box(win,constans.BLACK,constans.WIN_X/3,constans.WIN_Y/3,100,200,"hello")
+        draw_box(win,constans.BLACK,(constans.WIN_X/3)*2,constans.WIN_Y/3,100,200,"hello")
+#eventeket kipörgetve, ha klikk akkor, hol és ha jó helyen klikk akkor a box változik
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONUP:
+                if pygame.mouse.get_pos()[0] >= constans.WIN_X/3 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/3+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+200:
+                    draw_box(win,constans.BLACK,constans.WIN_X/3,constans.WIN_Y/3,100,200,"megvagy")
+                    time.sleep(2)
+                    r = False
