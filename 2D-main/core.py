@@ -9,8 +9,7 @@ win = pygame.display.set_mode((constans.WIN_X, constans.WIN_Y))
 pygame.display.set_caption(" The Hobblyat ")
 #opening screen
 
-print(opening.open(win))
-
+opening.welcome(win)
 
 pygame.quit()
 sys.exit()
