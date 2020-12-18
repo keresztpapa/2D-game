@@ -10,7 +10,8 @@ CORE.PY
 
 OPENING.PY
 
-- [] ÜRES OLDAL -> DOBOZOK ( NEW GAME / LOAD GAME)
+- [+] Background
+- [+] ÜRES OLDAL -> DOBOZOK ( NEW GAME / LOAD GAME)
 - [+] dinamikusan dobálja a main ből (szöveg, pozició)
 - [+] DRAW BOX
 - [+] TEXT KEZELÉS

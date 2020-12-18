@@ -1,13 +1,16 @@
-import pygame,sys
+import pygame,sys,os
 import time
 import constans
 pygame.init()
+
+bg = pygame.image.load(os.path.join('assets','back2.jpg'))
 
 #screen test
 def show(win):
 
 #kitölti a hátteret
-    win.fill(constans.COLOR)
+    win.blit(pygame.transform.scale(bg, (constans.WIN_X, constans.WIN_Y)), (0, 0))
+    #win.fill(constans.COLOR)
     pygame.display.update()
 
 
