@@ -3,7 +3,7 @@ CORE.PY
 - [+] initialize pygame
 - [] setup the core
 - [+] set caption
-- [+] inf. loop 
+- [+] main loop 
 - [+] exits
 - [+] display update
 - [] 
@@ -15,10 +15,22 @@ OPENING.PY
 - [+] DRAW BOX
 - [+] TEXT KEZELÉS
 - [] NEW GAME -> CHOOSE CHAR
-
+- [? - seems like megvan] ÖSSZEFŰZÉS a CORE.PY al
+- [+] HOVER
+- [+] CLICK
+- [] Event kezelés
+- [+] LEFT BUTTON
+- [] hozzá kéne toldani jobbra ugyanebben a felállásban
+--------------
+- [] kéne egy ugyanilyen method csak nem egymás mellett van a 3 box hanem egymásra téve -> new game / load game // settings
 
 CHARS.PY
 
 - [] constructor
 - [] stats ( X, Y, HP, DMG, PÉNZ, SPRITE)
 - [] mozgás
+
+
+CONST.PY
+
+random dolgok amit konstansok

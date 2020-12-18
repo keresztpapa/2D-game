@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 import opening
 import constans
 pygame.init()
@@ -7,15 +7,13 @@ pygame.init()
 win = pygame.display.set_mode((constans.WIN_X, constans.WIN_Y))
 #window cím
 pygame.display.set_caption(" The Hobblyat ")
+#opening screen
+
+print(opening.open(win))
 
 
-#opening.show(win)
-#opening.text_show(win,constans.WIN_X/3,constans.WIN_Y/2,"henlo 1/3")
-#opening.text_show(win,(constans.WIN_X/3)*2,constans.WIN_Y/2,"helo 2/3")
-#opening.draw_box(win,constans.BLACK,constans.WIN_X/3,constans.WIN_Y/3,100,200,"hello")
-#opening.draw_box(win,constans.BLACK,(constans.WIN_X/3)*2,constans.WIN_Y/3,100,200,"hello")
-
-opening.open(win)
+pygame.quit()
+sys.exit()
 
 
 def play():
