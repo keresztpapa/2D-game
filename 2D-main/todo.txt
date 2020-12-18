@@ -22,7 +22,10 @@ OPENING.PY
 - [+] LEFT BUTTON
 - [] hozzá kéne toldani jobbra ugyanebben a felállásban
 --------------
-- [] kéne egy ugyanilyen method csak nem egymás mellett van a 3 box hanem egymásra téve -> new game / load game // settings
+- [1/3] kéne egy ugyanilyen method csak nem egymás mellett van a 3 box hanem egymásra téve -> new game / load game // settings
+- [+] NEW GAME -> Char Selection
+- [] LOAD GAME ->
+- [] SETTINGS ->
 
 CHARS.PY
 
