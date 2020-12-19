@@ -30,7 +30,7 @@ OPENING.PY
 - [] ha ki lett választva egy char azt kéne befűzni a game be 
 - [] középen a karakter 2 oldalt a kijelzőnek meg box párok [--] _stat_név & stat_érték:_ [++]
 - [+] CHAR SELECT = a név az const (dovahkiin)
-- [] statokat kell elosztani
+- [+] statokat kell elosztani
 
 
 CHARS.PY
