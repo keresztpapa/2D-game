@@ -1,5 +1,6 @@
-import pygame, sys
+import pygame, sys, time
 
+import char
 import opening
 import game
 import constans
@@ -21,8 +22,7 @@ pygame.display.set_caption(" The Hobblyat ")
 screen_1 = opening.welcome(win)
 if screen_1 == "new_game":
 	character = opening.char_selection(win)
-
-
+	opening.stats(win)
 pygame.quit()
 sys.exit()
 

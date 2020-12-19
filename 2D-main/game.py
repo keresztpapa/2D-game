@@ -1,5 +1,6 @@
 import pygame, sys, os, time
 
+import char
 import opening
 import constans
 pygame.init()
