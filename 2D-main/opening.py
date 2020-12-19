@@ -108,8 +108,6 @@ def stats(win):
 
     player = char.Character(10,10,10)
 
-
-
     while r:
         draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3,50,100,str(player.get_hp()))
         draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*1.5,50,100,str(player.get_dmg()))
@@ -174,7 +172,6 @@ def stats(win):
                     draw_box(win,constans.WHITE,constans.WIN_X/5+225,constans.WIN_Y/3*2,50,100," + ")
                 else:
                     draw_box(win,constans.BLACK,constans.WIN_X/5+225,constans.WIN_Y/3*2,50,100," + ")
-
 
 
             if event.type == pygame.MOUSEBUTTONUP:
