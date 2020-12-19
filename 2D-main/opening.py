@@ -48,6 +48,7 @@ def draw_box(window, colour, left, top, width, height,str):
     pygame.display.update()
 
 
+
 #ez nyitja a programot
 def welcome(win):
 
@@ -101,8 +102,6 @@ def char_selection(win):
     return char_exist
 
 
-
-
 def stats(win):
     show(win)
     r = True
@@ -110,7 +109,11 @@ def stats(win):
     player = char.Character(10,10,10)
 
 
+
     while r:
+        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3,50,100,str(player.get_hp()))
+        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*1.5,50,100,str(player.get_dmg()))
+        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*2,50,100, str(player.get_deff()))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 r = False
@@ -179,7 +182,6 @@ def stats(win):
                     #HP--
                     print("hp-")
                     player.set_hp(player.get_hp()-1)
-
                     pass
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5+225 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5+275 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+100:
                     #hp++
@@ -190,25 +192,25 @@ def stats(win):
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5-75 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*1.5 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5-25 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*1.5+100:
                     #dmg--
                     print("dmg-")
-                    player.set_dmg(player.get_hp()-1)
+                    player.set_dmg(player.get_dmg()-1)
                     pass
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5+225 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*1.5 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5+275 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*1.5+100:
                     #dmg++
                     print("dmg+")
-                    player.set_dmg(player.get_hp()+1)
+                    player.set_dmg(player.get_dmg()+1)
                     pass
 
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5-75 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*2 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5-25 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*2+100:
                     #deff--
                     print("deff-")
-                    player.set_deff(player.get_hp()-1)
+                    player.set_deff(player.get_deff()-1)
                     pass
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5+225 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*2 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5+275 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*2+100:
                     #deff++
                     print("deff+")
-                    player.set_deff(player.get_hp()+1)
+                    player.set_deff(player.get_deff()+1)
                     pass
-
+                pygame.display.update()
 
     time.sleep(2)
 
