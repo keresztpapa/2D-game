@@ -1,5 +1,7 @@
-import pygame,sys,os
-import time
+import pygame,sys,os,time
+
+
+import game
 import constans
 pygame.init()
 
@@ -45,7 +47,31 @@ def draw_box(window, colour, left, top, width, height,str):
     pygame.display.update()
 
 
-# kezdő felület
+#ez nyitja a programot
+def welcome(win):
+
+    r = True
+    show(win)
+    draw_box(win,constans.BLACK,constans.WIN_X/2-100,constans.WIN_Y/3,200,50,"New Game")
+    draw_box(win,constans.BLACK,constans.WIN_X/2-100,(constans.WIN_Y/3)*1.5,200,50,"Load Game")
+    draw_box(win,constans.BLACK,constans.WIN_X/2-100,(constans.WIN_Y/3)*2,200,50,"Settings")
+    while r:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                r = False
+            if event.type == pygame.MOUSEMOTION:
+                if pygame.mouse.get_pos()[0] >= constans.WIN_X/2-100 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/2+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+50:
+                    draw_box(win,constans.WHITE,constans.WIN_X/2-100,constans.WIN_Y/3,200,50,"New Game")
+                else:
+                    draw_box(win,constans.BLACK,constans.WIN_X/2-100,constans.WIN_Y/3,200,50,"New Game")
+            if event.type == pygame.MOUSEBUTTONUP:
+                if pygame.mouse.get_pos()[0] >= constans.WIN_X/2-100 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/2+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+50:
+                    return "new_game"
+
+
+
+
+#karakter választó felület (2box ------ 1 működik)
 #argumentumok ABLAK || ANNAK A SZINE
 def char_selection(win):
     pygame.display.update()
@@ -76,23 +102,8 @@ def char_selection(win):
 
 
 
-def welcome(win):
 
-    r = True
+def stats(win):
     show(win)
-    draw_box(win,constans.BLACK,constans.WIN_X/2-100,constans.WIN_Y/3,200,50,"New Game")
-    draw_box(win,constans.BLACK,constans.WIN_X/2-100,(constans.WIN_Y/3)*1.5,200,50,"Load Game")
-    draw_box(win,constans.BLACK,constans.WIN_X/2-100,(constans.WIN_Y/3)*2,200,50,"Settings")
-    while r:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                r = False
-            if event.type == pygame.MOUSEMOTION:
-                if pygame.mouse.get_pos()[0] >= constans.WIN_X/2-100 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/2+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+50:
-                    draw_box(win,constans.WHITE,constans.WIN_X/2-100,constans.WIN_Y/3,200,50,"New Game")
-                else:
-                    draw_box(win,constans.BLACK,constans.WIN_X/2-100,constans.WIN_Y/3,200,50,"New Game")
-            if event.type == pygame.MOUSEBUTTONUP:
-                if pygame.mouse.get_pos()[0] >= constans.WIN_X/2-100 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/2+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+50:
-                    char_selection(win)
-                    r = False
+
+    return 0
