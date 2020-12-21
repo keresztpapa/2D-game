@@ -23,6 +23,7 @@ screen_1 = opening.welcome(win)
 if screen_1 == "new_game":
 	character = opening.char_selection(win)
 	opening.stats(win)
+	game.phase_1(win)
 pygame.quit()
 sys.exit()
 

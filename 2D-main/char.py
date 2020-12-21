@@ -6,12 +6,14 @@ import constans
 pygame.init()
 
 class Character():
-    def __init__(self, hp, dmg, deff):
+    def __init__(self, hp, dmg, deff, pos_x, pos_y):
         self.hp = hp
         self.dmg = dmg
         self.deff = deff
         self.skill = 11
-
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        
     def get_hp(self):
         return self.hp
 

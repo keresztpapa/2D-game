@@ -5,7 +5,7 @@ import game
 import constans
 pygame.init()
 
-bg = pygame.image.load(os.path.join('assets','back2.jpg'))
+bg = pygame.image.load(os.path.join('back2.jpg'))
 
 
 #screen test
@@ -106,7 +106,7 @@ def char_selection(win):
 def stats(win):
     show(win)
     r = True
-    player = char.Character(10,10,10)
+    player = char.Character(10,10,10,pos_x=50,pos_y=50)
     while r:
 
         for event in pygame.event.get():
@@ -211,11 +211,7 @@ def stats(win):
                     player.set_skill(player.get_skill()-1)
                     pass
             if(player.get_skill() == 0):
-                #átlép a game-re
-                pygame.quit()
-                sys.exit()
-
-                pygame.display.update()
+                return 0
 
         #a stat- értékek kiiratása
         draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3,50,100,str(player.get_hp()))
