@@ -21,29 +21,30 @@ pygame.display.set_caption(" The Hobblyat ")
 
 screen_1 = opening.welcome(win)
 if screen_1 == "new_game":
-	character = opening.char_selection(win)
-	opening.stats(win)
-	game.phase_1(win)
+	char_spr = opening.char_selection(win)
+	char_stat = opening.stats(win)
+	print(game.phase_1(win,char_spr,char_stat))
+
 pygame.quit()
 sys.exit()
 
 
 
 def play():
-	r = True
 	while r:
-		pygame.time.delay(100)
+	    pygame.time.delay(10)
+	    for event in pygame.event.get():
+	        if event.type == pygame.QUIT:
+	            r = False
+	    keys = pygame.key.get_pressed()
+	    if keys[pygame.K_LEFT]:
+	        x -= vel
+	    if keys[pygame.K_RIGHT]:
+	        x += vel
+	    if keys[pygame.K_UP]:
+	        y -= vel
+	    if keys[pygame.K_DOWN]:
+	        y += vel
 
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT:
-				r = False
-
-
-		key = pygame.key.get_pressed()
-		if key[pygame.K_ESCAPE]:
-			r = False
-
-
-		pygame.display.update()
-	pygame.quit
-	quit()
+	    pygame.draw.rect(win,constans.COLOR,(x,y,20,20))
+	    pygame.display.update()

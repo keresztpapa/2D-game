@@ -211,7 +211,7 @@ def stats(win):
                     player.set_skill(player.get_skill()-1)
                     pass
             if(player.get_skill() == 0):
-                return 0
+                return player
 
         #a stat- értékek kiiratása
         draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3,50,100,str(player.get_hp()))
