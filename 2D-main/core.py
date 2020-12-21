@@ -28,8 +28,6 @@ sys.exit()
 
 
 
-
-
 def play():
 	r = True
 	while r:

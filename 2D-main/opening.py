@@ -13,7 +13,6 @@ def show(win):
 
 #kitölti a hátteret
     win.blit(pygame.transform.scale(bg, (constans.WIN_X, constans.WIN_Y)), (0, 0))
-    #win.fill(constans.COLOR)
     pygame.display.update()
 
 
@@ -32,10 +31,10 @@ def text_show(win,x,y,str):
     # set the center of the rectangular object.
     textRect.center = (x, y)
 
+
     # copying the text surface object
     # to the display surface object
     # at the center coordinate.
-
     win.blit(text, textRect)
 
 
@@ -75,13 +74,15 @@ def welcome(win):
 #karakter választó felület (2box ------ 1 működik)
 #argumentumok ABLAK || ANNAK A SZINE
 def char_selection(win):
-    pygame.display.update()
+
     r = True
     char_exist = None
 #végtelen cilusba a klikk ig
     show(win)
+
     #place holder
     draw_box(win,constans.BLACK,(constans.WIN_X/3)*2,constans.WIN_Y/3,100,200,"hello2")
+
     while r:
 #eventeket kipörgetve, ha klikk akkor, hol és ha jó helyen klikk akkor a box változik
         for event in pygame.event.get():
@@ -105,13 +106,9 @@ def char_selection(win):
 def stats(win):
     show(win)
     r = True
-
     player = char.Character(10,10,10)
-
     while r:
-        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3,50,100,str(player.get_hp()))
-        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*1.5,50,100,str(player.get_dmg()))
-        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*2,50,100, str(player.get_deff()))
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 r = False
@@ -179,35 +176,51 @@ def stats(win):
                     #HP--
                     print("hp-")
                     player.set_hp(player.get_hp()-1)
+                    player.set_skill(player.get_skill()+1)
                     pass
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5+225 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5+275 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+100:
                     #hp++
                     print("hp+")
                     player.set_hp(player.get_hp()+1)
+                    player.set_skill(player.get_skill()-1)
                     pass
 
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5-75 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*1.5 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5-25 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*1.5+100:
                     #dmg--
                     print("dmg-")
                     player.set_dmg(player.get_dmg()-1)
+                    player.set_skill(player.get_skill()+1)
                     pass
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5+225 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*1.5 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5+275 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*1.5+100:
                     #dmg++
                     print("dmg+")
                     player.set_dmg(player.get_dmg()+1)
+                    player.set_skill(player.get_skill()-1)
                     pass
 
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5-75 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*2 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5-25 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*2+100:
                     #deff--
                     print("deff-")
                     player.set_deff(player.get_deff()-1)
+                    player.set_skill(player.get_skill()+1)
                     pass
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5+225 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*2 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5+275 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*2+100:
                     #deff++
                     print("deff+")
                     player.set_deff(player.get_deff()+1)
+                    player.set_skill(player.get_skill()-1)
                     pass
+            if(player.get_skill() == 0):
+                #átlép a game-re
+                pygame.quit()
+                sys.exit()
+
                 pygame.display.update()
+
+        #a stat- értékek kiiratása
+        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3,50,100,str(player.get_hp()))
+        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*1.5,50,100,str(player.get_dmg()))
+        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*2,50,100, str(player.get_deff()))
 
     time.sleep(2)
 

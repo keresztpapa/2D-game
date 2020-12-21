@@ -19,7 +19,7 @@ OPENING.PY
 - [? - seems like megvan] ÖSSZEFŰZÉS a CORE.PY al
 - [+] HOVER
 - [+] CLICK
-- [] Event kezelés
+- [~] Event kezelés
 - [+] LEFT BUTTON
 - [] hozzá kéne toldani jobbra ugyanebben a felállásban
 --------------
@@ -35,9 +35,11 @@ OPENING.PY
 
 CHARS.PY
 
-- [] constructor
-- [] stats ( X, Y, HP, DMG, PÉNZ, SPRITE)
+- [+] constructor
+- [~] stats ( X, Y, HP, DMG, PÉNZ, SPRITE)
+- [+] SKILL points
 - [] mozgás
+
 
 
 CONST.PY

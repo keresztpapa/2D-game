@@ -10,6 +10,7 @@ class Character():
         self.hp = hp
         self.dmg = dmg
         self.deff = deff
+        self.skill = 11
 
     def get_hp(self):
         return self.hp
@@ -28,3 +29,9 @@ class Character():
 
     def set_deff(self, x):
         self.deff = x
+
+    def set_skill(self,x):
+        self.skill = x
+
+    def get_skill(self):
+        return self.skill
