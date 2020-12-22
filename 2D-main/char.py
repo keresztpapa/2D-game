@@ -34,6 +34,9 @@ class Character():
     def get_deff(self):
         return self.deff
 
+    def get_skill(self):
+        return self.skill
+
     def set_hp(self, x):
         self.hp = x
 
@@ -46,8 +49,6 @@ class Character():
     def set_skill(self,x):
         self.skill = x
 
-    def get_skill(self):
-        return self.skill
 
     def move(self,win,bg,spr):
         walkCount = 0
@@ -107,7 +108,9 @@ class Character():
 
 
 class Hero(Character):
-
+    def __init__(self,hp, dmg, deff, pos_x, pos_y):
+        super().__init__(hp, dmg, deff, pos_x, pos_y)
+        self.name = constans.NAME
 
     def cast(pos_x, pos_y, vel, direction, rng, hitmark):
 

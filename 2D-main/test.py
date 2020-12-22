@@ -12,16 +12,17 @@ class Person():
 class Gyerek(Person):
     def __init__(self,nev,kor):
         super().__init__(nev,kor)
-        self.nev = nev
 
-
+    def beszol(self):
+        print(self.nev)
 
 p = Person("béla", 35)
+
 
 p.beszol(p.getAge())
 
 c = Gyerek("béla_fia",10)
 
-c.beszol(c.getAge())
+c.beszol()
 
 print(c.nev)
