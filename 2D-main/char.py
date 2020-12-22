@@ -6,6 +6,7 @@ import game
 import constans
 pygame.init()
 
+
 class Character():
 
     Walk_Left = []
@@ -49,76 +50,66 @@ class Character():
         return self.skill
 
     def move(self,win,bg,spr):
+        walkCount = 0
         r = True
         left = False
         right = False
         up = False
         down = False
         vel = 10
+        if spr == "bal":
+            Walk_Left = [pygame.image.load('mage_l1.gif'),pygame.image.load('mage_l2.gif')]
+            Walk_Right = [pygame.image.load('mage_r1.gif'),pygame.image.load('mage_r2.gif')]
+            Walk_Up = [pygame.image.load('mage_b1.gif'),pygame.image.load('mage_b2.gif')]
+            Walk_Down = [pygame.image.load('mage_f1.gif'),pygame.image.load('mage_f2.gif')]
+            Standing = pygame.image.load('mage_f1.gif')
+        if spr == "jobb":
+            Walk_Left = [pygame.image.load('witch_l1.gif'),pygame.image.load('witch_l2.gif')]
+            Walk_Right = [pygame.image.load('witch_r1.gif'),pygame.image.load('witch_r2.gif')]
+            Walk_Up = [pygame.image.load('witch_b1.gif'),pygame.image.load('witch_b2.gif')]
+            Walk_Down = [pygame.image.load('witch_f1.gif'),pygame.image.load('witch_f2.gif')]
+            Standing = pygame.image.load('witch_f1.gif')
 
-        def reDraw(win,bg,spr):
-            #sprites
-
-            if spr == "bal":
-                Walk_Left = [pygame.image.load('mage_l1.gif'),pygame.image.load('mage_l2.gif')]
-                Walk_Right = [pygame.image.load('mage_r1.gif'),pygame.image.load('mage_r2.gif')]
-                Walk_Up = [pygame.image.load('mage_b1.gif'),pygame.image.load('mage_b2.gif')]
-                Walk_Down = [pygame.image.load('mage_f1.gif'),pygame.image.load('mage_f2.gif')]
-                Standing = pygame.image.load('mage_f1.gif')
-            if spr == "jobb":
-                Walk_Left = [pygame.image.load('witch_l1.gif'),pygame.image.load('witch_l2.gif')]
-                Walk_Right = [pygame.image.load('witch_r1.gif'),pygame.image.load('witch_r2.gif')]
-                Walk_Up = [pygame.image.load('witch_b1.gif'),pygame.image.load('witch_b2.gif')]
-                Walk_Down = [pygame.image.load('witch_f1.gif'),pygame.image.load('witch_f2.gif')]
-                Standing = pygame.image.load('witch_f1.gif')
-
-            win.fill(constans.BLACK)
-            win.blit(pygame.transform.scale(bg, (constans.WIN_X, constans.WIN_Y)), (0, 0))
-            walkCount = 0
-            if walkCount >= 3:
-                walkCount = 0
-            if left:
-                win.blit(Walk_Left[walkCount], (self.pos_x,self.pos_y))
-                walkCount+=1
-            elif right:
-                win.blit(Walk_Right[walkCount], (self.pos_x,self.pos_y))
-                walkCount+=1
-            elif up:
-                win.blit(Walk_Up[walkCount],(self.pos_x,self.pos_y))
-                walkCount+=1
-            elif down:
-                win.blit(Walk_Down[walkCount],(self.pos_x,self.pos_y))
-                walkCount+=1
-            else:
-                win.blit(Standing,(self.pos_x,self.pos_y))
-                walkCount = 0
-            pygame.display.update()
 
         while r:
+            win.fill(constans.BLACK)
+            win.blit(pygame.transform.scale(bg, (constans.WIN_X, constans.WIN_Y)), (0, 0))
             pygame.time.delay(80)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     r = False
             keys = pygame.key.get_pressed()
+
             if keys[pygame.K_LEFT] and self.pos_x > vel :
                 self.pos_x -= vel
-                left = True
-                right = False
+                win.blit(Walk_Left[walkCount], (self.pos_x,self.pos_y))
+                walkCount+=1
+
             elif keys[pygame.K_RIGHT] and self.pos_x < constans.WIN_X - vel - 20:
                 self.pos_x += vel
-                left = False
-                right = True
+                win.blit(Walk_Right[walkCount], (self.pos_x,self.pos_y))
+                walkCount+=1
             elif keys[pygame.K_UP] and self.pos_y > vel:
                 self.pos_y -= vel
-                up = True
-                down = False
+                win.blit(Walk_Up[walkCount],(self.pos_x,self.pos_y))
+                walkCount+=1
             elif keys[pygame.K_DOWN] and self.pos_y < constans.WIN_Y -vel-20:
                 self.pos_y += vel
-                up = False
-                down = True
+                win.blit(Walk_Down[walkCount],(self.pos_x,self.pos_y))
+                walkCount+=1
             else:
-                left = False
-                right = False
-                up = False
-                down = False
-            reDraw(win,bg,spr)
+                win.blit(Standing,(self.pos_x,self.pos_y))
+
+            if walkCount > 1:
+                walkCount = 0
+            pygame.display.update()
+
+
+
+class Hero(Character):
+
+
+    def cast(pos_x, pos_y, vel, direction, rng, hitmark):
+
+
+        return 0
