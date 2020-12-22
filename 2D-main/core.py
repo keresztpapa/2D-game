@@ -1,5 +1,6 @@
 import pygame, sys, time
 
+import engine
 import char
 import opening
 import game

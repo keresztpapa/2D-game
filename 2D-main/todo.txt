@@ -27,10 +27,23 @@ OPENING.PY
 - [+] NEW GAME -> Char Selection -> meg kéne oldani a 'box'okon a karakter képét + kicsit feljebb helyezni a szöveget
 - [] LOAD GAME ->
 - [] SETTINGS ->
-- [] ha ki lett választva egy char azt kéne befűzni a game be 
+- [+] ha ki lett választva egy char azt kéne befűzni a game be 
 - [] középen a karakter 2 oldalt a kijelzőnek meg box párok [--] _stat_név & stat_érték:_ [++]
 - [+] CHAR SELECT = a név az const (dovahkiin)
 - [+] statokat kell elosztani
+- [] kéne egy remaining points valahova
+- [] inventory system
+
+GAME.PY
+- [] játék különböző fázisait fogja lefűzni
+
+
+ENGINE.PY
+- [] Projectile
+- [] Chest
+- [] interaction
+- [] items
+
 
 
 CHARS.PY
@@ -38,7 +51,10 @@ CHARS.PY
 - [+] constructor
 - [~] stats ( X, Y, HP, DMG, PÉNZ, SPRITE)
 - [+] SKILL points
-- [] mozgás
+- [+] mozgás
+- [+] karakter megjelenités
+- [+] össze fűzés a dolgokkal
+- [+] visszatéréseket megmódkolni
 
 
 

@@ -1,5 +1,6 @@
 import pygame, sys
 
+import engine
 import opening
 import game
 import constans
@@ -74,7 +75,7 @@ class Character():
             win.fill(constans.BLACK)
             win.blit(pygame.transform.scale(bg, (constans.WIN_X, constans.WIN_Y)), (0, 0))
             walkCount = 0
-            if walkCount >= 2:
+            if walkCount >= 3:
                 walkCount = 0
             if left:
                 win.blit(Walk_Left[walkCount], (self.pos_x,self.pos_y))
