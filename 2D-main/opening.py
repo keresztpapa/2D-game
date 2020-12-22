@@ -81,7 +81,7 @@ def char_selection(win):
     show(win)
 
     #place holder
-    draw_box(win,constans.BLACK,(constans.WIN_X/3)*2,constans.WIN_Y/3,100,200,"hello2")
+    #draw_box(win,constans.BLACK,(constans.WIN_X/3)*2,constans.WIN_Y/3,100,200,"hello2")
 
     while r:
 #eventeket kipörgetve, ha klikk akkor, hol és ha jó helyen klikk akkor a box változik
@@ -91,15 +91,26 @@ def char_selection(win):
 #klikkre figyel, visszatér egy string el
             if event.type == pygame.MOUSEBUTTONUP:
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/3 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/3+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+200:
-                    draw_box(win,constans.BLACK,constans.WIN_X/3,constans.WIN_Y/3,125,200,"megvagy")
+                    draw_box(win,constans.BLACK,constans.WIN_X/3,constans.WIN_Y/3,125,200,"bal")
                     char_exist = "bal"
                     return char_exist
+
+                if pygame.mouse.get_pos()[0] >= (constans.WIN_X/3)*2 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/3)*2+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+200:
+                    draw_box(win,constans.BLACK,(constans.WIN_X/3)*2,constans.WIN_Y/3,125,200,"jobb")
+                    char_exist = "jobb"
+                    return char_exist
+
 #egér mozgásra figyel:// HOVER css -be, nem tudom magyarul
             if event.type == pygame.MOUSEMOTION:
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/3 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/3+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+200:
-                    draw_box(win,constans.WHITE,constans.WIN_X/3,constans.WIN_Y/3,100,200,"hello1")
+                    draw_box(win,constans.WHITE,constans.WIN_X/3,constans.WIN_Y/3,100,200,"bal")
                 else:
-                    draw_box(win,constans.BLACK,constans.WIN_X/3,constans.WIN_Y/3,100,200,"hello1")
+                    draw_box(win,constans.BLACK,constans.WIN_X/3,constans.WIN_Y/3,100,200,"bal")
+
+                if pygame.mouse.get_pos()[0] >= (constans.WIN_X/3)*2 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/3)*2+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+200:
+                    draw_box(win,constans.WHITE,(constans.WIN_X/3)*2,constans.WIN_Y/3,125,200,"jobb")
+                else:
+                    draw_box(win,constans.BLACK,(constans.WIN_X/3)*2,constans.WIN_Y/3,125,200,"jobb")
     return char_exist
 
 
