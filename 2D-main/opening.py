@@ -54,23 +54,41 @@ def welcome(win):
 
     r = True
     show(win)
-    draw_box(win,constans.BLACK,constans.WIN_X/2-100,(constans.WIN_Y/3)*1.5,200,50,"Load Game")
+    #draw_box(win,constans.BLACK,constans.WIN_X/2-100,(constans.WIN_Y/3)*1.5,200,50,"Load Game")
+
     draw_box(win,constans.BLACK,constans.WIN_X/2-100,(constans.WIN_Y/3)*2,200,50,"Settings")
     while r:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 r = False
             if event.type == pygame.MOUSEMOTION:
+
+                #new game gomb
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/2-100 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/2+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+50:
                     draw_box(win,constans.WHITE,constans.WIN_X/2-100,constans.WIN_Y/3,200,50,"New Game")
                 else:
                     draw_box(win,constans.BLACK,constans.WIN_X/2-100,constans.WIN_Y/3,200,50,"New Game")
+
+                #load game gomb
+                if pygame.mouse.get_pos()[0] >= constans.WIN_X/2-100 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/3)*1.5 and pygame.mouse.get_pos()[0] <= constans.WIN_X/2+100 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/3)*1.5+50:
+                    draw_box(win,constans.WHITE,constans.WIN_X/2-100,(constans.WIN_Y/3)*1.5,200,50,"Load Game")
+                else:
+                    draw_box(win,constans.BLACK,constans.WIN_X/2-100,(constans.WIN_Y/3)*1.5,200,50,"Load Game")
+
+                #setting gomb
+                if pygame.mouse.get_pos()[0] >= constans.WIN_X/2-100 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/3)*2 and pygame.mouse.get_pos()[0] <= constans.WIN_X/2+100 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/3)*2+50:
+                    draw_box(win,constans.WHITE,constans.WIN_X/2-100,(constans.WIN_Y/3)*2,200,50,"Settings")
+                else:
+                    draw_box(win,constans.BLACK,constans.WIN_X/2-100,(constans.WIN_Y/3)*2,200,50,"Settings")
+
+
             if event.type == pygame.MOUSEBUTTONUP:
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/2-100 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/2+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+50:
                     return "new_game"
-
-
-
+                if pygame.mouse.get_pos()[0] >= constans.WIN_X/2-100 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/3)*1.5 and pygame.mouse.get_pos()[0] <= constans.WIN_X/2+100 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/3)*1.5+50:
+                    return "load_game"
+                if pygame.mouse.get_pos()[0] >= constans.WIN_X/2-100 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/3)*2 and pygame.mouse.get_pos()[0] <= constans.WIN_X/2+100 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/3)*2+50:
+                    return "settings"
 
 #karakter választó felület (2box ------ 1 működik)
 #argumentumok ABLAK || ANNAK A SZINE

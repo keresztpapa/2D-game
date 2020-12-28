@@ -50,6 +50,11 @@ class Character():
         self.skill = x
 
 
+class Hero(Character):
+    def __init__(self,hp, dmg, deff, pos_x, pos_y):
+        super().__init__(hp, dmg, deff, pos_x, pos_y)
+        self.name = constans.NAME
+
     def move(self,win,bg,spr):
         walkCount = 0
         r = True
@@ -115,17 +120,10 @@ class Character():
                 elif last_dir == "jobb":
                     win.blit(Walk_Right[0],(self.pos_x,self.pos_y))
 
-            
+
             if walkCount > 1:
                 walkCount = 0
             pygame.display.update()
-
-
-
-class Hero(Character):
-    def __init__(self,hp, dmg, deff, pos_x, pos_y):
-        super().__init__(hp, dmg, deff, pos_x, pos_y)
-        self.name = constans.NAME
 
     def cast(pos_x, pos_y, vel, direction, rng, hitmark):
 
