@@ -25,14 +25,15 @@ OPENING.PY
 --------------
 - [1/3] kéne egy ugyanilyen method csak nem egymás mellett van a 3 box hanem egymásra téve -> new game / load game // settings
 - [+] NEW GAME -> Char Selection -> meg kéne oldani a 'box'okon a karakter képét + kicsit feljebb helyezni a szöveget
-- [] LOAD GAME ->
-- [] SETTINGS ->
+- [+] LOAD GAME ->
+- [+] SETTINGS ->
 - [+] ha ki lett választva egy char azt kéne befűzni a game be 
-- [] középen a karakter 2 oldalt a kijelzőnek meg box párok [--] _stat_név & stat_érték:_ [++]
+- [+] középen a karakter 2 oldalt a kijelzőnek meg box párok [--] _stat_név & stat_érték:_ [++]
 - [+] CHAR SELECT = a név az const (dovahkiin)
 - [+] statokat kell elosztani
 - [] kéne egy remaining points valahova
 - [] inventory system
+- [] ELGÉGETŐBB PROBLÉMA A PROJECTILE OK
 
 GAME.PY
 - [] játék különböző fázisait fogja lefűzni

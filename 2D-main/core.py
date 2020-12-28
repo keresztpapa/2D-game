@@ -20,9 +20,9 @@ if screen == "new_game":
 	char_spr = opening.char_selection(win)
 	char_stat = opening.stats(win)
 	print(game.phase_1(win,char_spr,char_stat))
-if screen == "load_game":
+elif screen == "load_game":
 	pass
-if screen == "settings":
+elif screen == "settings":
 	pass
 
 pygame.quit()

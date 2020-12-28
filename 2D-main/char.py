@@ -20,10 +20,15 @@ class Character():
         self.hp = hp
         self.dmg = dmg
         self.deff = deff
-        self.skill = 11
+        self.skill = 0
         self.pos_x = pos_x
         self.pos_y = pos_y
 
+    def get_pos_x(self):
+        return self.pos_x
+
+    def get_pos_y(self):
+        return self.pos_y
 
     def get_hp(self):
         return self.hp
@@ -55,6 +60,39 @@ class Hero(Character):
         super().__init__(hp, dmg, deff, pos_x, pos_y)
         self.name = constans.NAME
 
+    def cast(self,win,pos_x, pos_y, vel, direction):
+    #pygame.draw.circle(screen, color, (x, y), radius, thickness)
+        not_hit = True
+        if direction == "bal":
+            while not_hit:
+                pos_x = pos_x - vel
+                pygame.draw.circle(win,constans.RED,(pos_x,pos_y),5,5)
+                if pos_x <= 0:
+                    not_hit = False
+
+        if direction == "jobb":
+            while not_hit:
+                pos_x = pos_x + vel
+                pygame.draw.circle(win,constans.RED,(pos_x,pos_y),5,5)
+                if pos_x >= constans.WIN_X:
+                    not_hit = False
+
+        if direction == "fel":
+            while not_hit:
+                pos_y = pos_y - vel
+                pygame.draw.circle(win,constans.RED,(pos_x,pos_y),5,5)
+                if pos_y <= 0:
+                    not_hit = False
+
+        if direction == "le":
+            while not_hit:
+                pos_y = pos_y + vel
+                pygame.draw.circle(win,constans.RED,(pos_x,pos_y),5,5)
+                if pos_y >= constans.WIN_Y:
+                    not_hit = False
+
+
+
     def move(self,win,bg,spr):
         walkCount = 0
         r = True
@@ -64,6 +102,7 @@ class Hero(Character):
         down = False
         vel = 10
         last_dir = None
+
         if spr == "bal":
             Walk_Left = [pygame.image.load('mage_l1.gif'),pygame.image.load('mage_l2.gif')]
             Walk_Right = [pygame.image.load('mage_r1.gif'),pygame.image.load('mage_r2.gif')]
@@ -110,6 +149,10 @@ class Hero(Character):
                 win.blit(Walk_Down[walkCount],(self.pos_x,self.pos_y))
                 walkCount+=1
                 last_dir = "le"
+
+            elif keys[pygame.K_SPACE]:
+                #cast(win,pos_x, pos_y, vel, direction):
+                self.cast(win,self.get_pos_x()+10,self.get_pos_y()+10,vel,last_dir)
             else:
                 if last_dir == "le":
                     win.blit(Standing,(self.pos_x,self.pos_y))
@@ -124,8 +167,3 @@ class Hero(Character):
             if walkCount > 1:
                 walkCount = 0
             pygame.display.update()
-
-    def cast(pos_x, pos_y, vel, direction, rng, hitmark):
-
-
-        return 0
