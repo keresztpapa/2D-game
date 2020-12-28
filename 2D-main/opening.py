@@ -225,12 +225,12 @@ def stats(win):
             if(player.get_skill() == 0):
                 return player
 
-        #a stat- értékek kiiratása
-        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3,50,100,str(player.get_hp()))
-        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*1.5,50,100,str(player.get_dmg()))
-        draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*2,50,100, str(player.get_deff()))
+            #a stat- értékek kiiratása
+            draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3,50,100,str(player.get_hp()))
+            draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*1.5,50,100,str(player.get_dmg()))
+            draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*2,50,100, str(player.get_deff()))
 
-    time.sleep(2)
+    time.sleep(1)
 
 
 

@@ -58,6 +58,7 @@ class Character():
         up = False
         down = False
         vel = 10
+        last_dir = None
         if spr == "bal":
             Walk_Left = [pygame.image.load('mage_l1.gif'),pygame.image.load('mage_l2.gif')]
             Walk_Right = [pygame.image.load('mage_r1.gif'),pygame.image.load('mage_r2.gif')]
@@ -79,28 +80,42 @@ class Character():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     r = False
-            keys = pygame.key.get_pressed()
 
+            keys = pygame.key.get_pressed()
             if keys[pygame.K_LEFT] and self.pos_x > vel :
                 self.pos_x -= vel
                 win.blit(Walk_Left[walkCount], (self.pos_x,self.pos_y))
                 walkCount+=1
+                last_dir = "bal"
 
             elif keys[pygame.K_RIGHT] and self.pos_x < constans.WIN_X - vel - 20:
                 self.pos_x += vel
                 win.blit(Walk_Right[walkCount], (self.pos_x,self.pos_y))
                 walkCount+=1
+                last_dir = "jobb"
+
             elif keys[pygame.K_UP] and self.pos_y > vel:
                 self.pos_y -= vel
                 win.blit(Walk_Up[walkCount],(self.pos_x,self.pos_y))
                 walkCount+=1
+                last_dir = "fel"
+
             elif keys[pygame.K_DOWN] and self.pos_y < constans.WIN_Y -vel-20:
                 self.pos_y += vel
                 win.blit(Walk_Down[walkCount],(self.pos_x,self.pos_y))
                 walkCount+=1
+                last_dir = "le"
             else:
-                win.blit(Standing,(self.pos_x,self.pos_y))
+                if last_dir == "le":
+                    win.blit(Standing,(self.pos_x,self.pos_y))
+                elif last_dir == "fel":
+                    win.blit(Walk_Up[0],(self.pos_x,self.pos_y))
+                elif last_dir == "bal":
+                    win.blit(Walk_Left[0],(self.pos_x,self.pos_y))
+                elif last_dir == "jobb":
+                    win.blit(Walk_Right[0],(self.pos_x,self.pos_y))
 
+            
             if walkCount > 1:
                 walkCount = 0
             pygame.display.update()
