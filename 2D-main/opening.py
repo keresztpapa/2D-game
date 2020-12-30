@@ -136,7 +136,7 @@ def char_selection(win):
 def stats(win):
     show(win)
     r = True
-    player = char.Hero(10,10,10,pos_x=50,pos_y=50)
+    player = char.Hero(10,10,10,pos_x=80,pos_y=250)
     while r:
 
         for event in pygame.event.get():

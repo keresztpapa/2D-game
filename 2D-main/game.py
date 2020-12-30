@@ -12,6 +12,8 @@ bg = pygame.image.load(os.path.join('house1.gif'))
 #ply_st === player skill pointok
 
 
+
+
 def phase_1(win ,ply_spr ,ply_st):
-    ply_st.move(win,bg,ply_spr)
-    return 0
+    ply_st.action(win,bg,ply_spr)
+    pygame.display.update()

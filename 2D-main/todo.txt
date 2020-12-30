@@ -16,14 +16,14 @@ OPENING.PY
 - [+] DRAW BOX
 - [+] TEXT KEZELÉS
 - [+] NEW GAME -> CHOOSE CHAR
-- [? - seems like megvan] ÖSSZEFŰZÉS a CORE.PY al
+- [+] ÖSSZEFŰZÉS a CORE.PY al
 - [+] HOVER
 - [+] CLICK
 - [~] Event kezelés
 - [+] LEFT BUTTON
-- [] hozzá kéne toldani jobbra ugyanebben a felállásban
+- [+] hozzá kéne toldani jobbra ugyanebben a felállásban
 --------------
-- [1/3] kéne egy ugyanilyen method csak nem egymás mellett van a 3 box hanem egymásra téve -> new game / load game // settings
+- [+] kéne egy ugyanilyen method csak nem egymás mellett van a 3 box hanem egymásra téve -> new game / load game // settings
 - [+] NEW GAME -> Char Selection -> meg kéne oldani a 'box'okon a karakter képét + kicsit feljebb helyezni a szöveget
 - [+] LOAD GAME ->
 - [+] SETTINGS ->
@@ -31,7 +31,8 @@ OPENING.PY
 - [+] középen a karakter 2 oldalt a kijelzőnek meg box párok [--] _stat_név & stat_érték:_ [++]
 - [+] CHAR SELECT = a név az const (dovahkiin)
 - [+] statokat kell elosztani
-- [] kéne egy remaining points valahova
+- [+] kéne egy remaining points valahova
+
 - [] inventory system
 - [] ELGÉGETŐBB PROBLÉMA A PROJECTILE OK
 

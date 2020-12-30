@@ -1,28 +1,10 @@
-class Person():
-    def __init__(self,nev,kor):
-        self.nev = nev
-        self.kor = kor
+class Chest():
+    chest_pic = pygame.image.load(os.path.join('chest.png'))
 
-    def getAge(self):
-        return self.kor
+    def __init__(self,pos_x,pos_y):
+            self.pos_x
+            self.pos_y
 
-    def beszol(self,age):
-        print(age)
-
-class Gyerek(Person):
-    def __init__(self,nev,kor):
-        super().__init__(nev,kor)
-
-    def beszol(self):
-        print(self.nev)
-
-p = Person("béla", 35)
-
-
-p.beszol(p.getAge())
-
-c = Gyerek("béla_fia",10)
-
-c.beszol()
-
-print(c.nev)
+    def chest_show(self,win):
+        win.blit(chest_pic, (self.pos_x, self.pos_y)), (0, 0)
+        pygame.display.update()

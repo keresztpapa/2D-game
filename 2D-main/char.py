@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, time
 
 import engine
 import opening
@@ -60,40 +60,8 @@ class Hero(Character):
         super().__init__(hp, dmg, deff, pos_x, pos_y)
         self.name = constans.NAME
 
-    def cast(self,win,pos_x, pos_y, vel, direction):
-    #pygame.draw.circle(screen, color, (x, y), radius, thickness)
-        not_hit = True
-        if direction == "bal":
-            while not_hit:
-                pos_x = pos_x - vel
-                pygame.draw.circle(win,constans.RED,(pos_x,pos_y),5,5)
-                if pos_x <= 0:
-                    not_hit = False
 
-        if direction == "jobb":
-            while not_hit:
-                pos_x = pos_x + vel
-                pygame.draw.circle(win,constans.RED,(pos_x,pos_y),5,5)
-                if pos_x >= constans.WIN_X:
-                    not_hit = False
-
-        if direction == "fel":
-            while not_hit:
-                pos_y = pos_y - vel
-                pygame.draw.circle(win,constans.RED,(pos_x,pos_y),5,5)
-                if pos_y <= 0:
-                    not_hit = False
-
-        if direction == "le":
-            while not_hit:
-                pos_y = pos_y + vel
-                pygame.draw.circle(win,constans.RED,(pos_x,pos_y),5,5)
-                if pos_y >= constans.WIN_Y:
-                    not_hit = False
-
-
-
-    def move(self,win,bg,spr):
+    def action(self,win,bg,spr):
         walkCount = 0
         r = True
         left = False
@@ -150,9 +118,10 @@ class Hero(Character):
                 walkCount+=1
                 last_dir = "le"
 
-            elif keys[pygame.K_SPACE]:
-                #cast(win,pos_x, pos_y, vel, direction):
-                self.cast(win,self.get_pos_x()+10,self.get_pos_y()+10,vel,last_dir)
+            # elif keys[pygame.K_SPACE]:
+            #     #projectiles
+            #     pass
+
             else:
                 if last_dir == "le":
                     win.blit(Standing,(self.pos_x,self.pos_y))
