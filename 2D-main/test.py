@@ -11,6 +11,11 @@ class Chest():
 
 
 
+--------------------------------------
+print(f"player x:{self.pos_x} \nplayer y: {self.pos_y}")
+print(f"player x:{self.pos_x} \nplayer y: {self.pos_y}")
+print(f"player x:{self.pos_x} \nplayer y: {self.pos_y}")
+print(f"player x:{self.pos_x} \nplayer y: {self.pos_y}")
 ---------------------------------------
         while r:
             win.fill(constans.BLACK)

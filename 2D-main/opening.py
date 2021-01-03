@@ -98,9 +98,6 @@ def char_selection(win):
 #végtelen cilusba a klikk ig
     show(win)
 
-    #place holder
-    #draw_box(win,constans.BLACK,(constans.WIN_X/3)*2,constans.WIN_Y/3,100,200,"hello2")
-
     while r:
 #eventeket kipörgetve, ha klikk akkor, hol és ha jó helyen klikk akkor a box változik
         for event in pygame.event.get():

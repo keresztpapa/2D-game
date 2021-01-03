@@ -33,6 +33,7 @@ OPENING.PY
 - [+] statokat kell elosztani
 - [+] kéne egy remaining points valahova
 
+- [] a láda rendszert kéne megcsinálni
 - [] inventory system
 - [] harc rendszer mint a pokemon ba
 
@@ -45,6 +46,7 @@ ENGINE.PY
 - [] Projectile
 - [+] Chest
 - [] Containing loot
+//////////need repair
 - [] Chest interaction
 - [] interaction
 - [] items

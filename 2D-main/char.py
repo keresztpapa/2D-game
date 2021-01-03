@@ -1,4 +1,4 @@
-import pygame, sys, time
+import pygame, sys, time, random
 
 import engine
 import opening
@@ -72,6 +72,7 @@ class Hero(Character):
         down = False
         vel = 10
         last_dir = None
+        stand = None
 
         if spr == "bal":
             Walk_Left = [pygame.image.load('mage_l1.gif'),pygame.image.load('mage_l2.gif')]
@@ -86,8 +87,21 @@ class Hero(Character):
             Walk_Down = [pygame.image.load('witch_f1.gif'),pygame.image.load('witch_f2.gif')]
             Standing = pygame.image.load('witch_f1.gif')
 
-        c = engine.Chest(100,300)
-        
+        # CHESS MECHANISM
+        #DOESNT WORK YET
+        # c = engine.Chest(100,300)
+        #
+        # def chess_int():
+        #     cx = c.get_pos_x()
+        #     cy = c.get_pos_y()
+        #     sx = self.pos_x
+        #     sy = self.pos_y
+        #
+        #     if cx-40 >= sx and sy >= cy-40 and sx <= cx+40 and sy <= cy+40:
+        #         c.chest_show(win,'chest_w_b.png')
+        #     else:
+        #         c.chest_show(win,'chest.png')
+
         while r:
             win.fill(constans.BLACK)
             win.blit(pygame.transform.scale(bg, (constans.WIN_X, constans.WIN_Y)), (0, 0))
@@ -103,29 +117,34 @@ class Hero(Character):
                 win.blit(Walk_Left[step], (self.pos_x,self.pos_y))
                 step+=1
                 last_dir = "bal"
+                stand = False
 
             elif keys[pygame.K_RIGHT] and self.pos_x < constans.WIN_X - vel - 20:
                 self.pos_x += vel
                 win.blit(Walk_Right[step], (self.pos_x,self.pos_y))
                 step+=1
                 last_dir = "jobb"
+                stand = False
 
             elif keys[pygame.K_UP] and self.pos_y > vel:
                 self.pos_y -= vel
                 win.blit(Walk_Up[step],(self.pos_x,self.pos_y))
                 step+=1
                 last_dir = "fel"
+                stand = False
 
             elif keys[pygame.K_DOWN] and self.pos_y < constans.WIN_Y -vel-20:
                 self.pos_y += vel
                 win.blit(Walk_Down[step],(self.pos_x,self.pos_y))
                 step+=1
                 last_dir = "le"
+                stand = False
 
             elif keys[pygame.K_SPACE]:
                 return False
 
             else:
+                stand = True
                 if last_dir == "le":
                     win.blit(Standing,(self.pos_x,self.pos_y))
                 elif last_dir == "fel":
@@ -140,5 +159,10 @@ class Hero(Character):
 
             if step > 1:
                 step = 0
-            c.chest_show(win)
+
+            if random.randint(0,9) == 1 and stand == False:
+                
+                print("battle")
+            #chess_int()
+
             pygame.display.update()
