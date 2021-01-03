@@ -7,6 +7,7 @@ import constans
 pygame.init()
 
 
+
 class Character():
 
     Walk_Left = []
@@ -62,7 +63,8 @@ class Hero(Character):
 
 
     def action(self,win,bg,spr):
-        walkCount = 0
+
+        step = 0
         r = True
         left = False
         right = False
@@ -84,10 +86,12 @@ class Hero(Character):
             Walk_Down = [pygame.image.load('witch_f1.gif'),pygame.image.load('witch_f2.gif')]
             Standing = pygame.image.load('witch_f1.gif')
 
-
+        c = engine.Chest(100,300)
+        
         while r:
             win.fill(constans.BLACK)
             win.blit(pygame.transform.scale(bg, (constans.WIN_X, constans.WIN_Y)), (0, 0))
+
             pygame.time.delay(80)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -96,31 +100,30 @@ class Hero(Character):
             keys = pygame.key.get_pressed()
             if keys[pygame.K_LEFT] and self.pos_x > vel :
                 self.pos_x -= vel
-                win.blit(Walk_Left[walkCount], (self.pos_x,self.pos_y))
-                walkCount+=1
+                win.blit(Walk_Left[step], (self.pos_x,self.pos_y))
+                step+=1
                 last_dir = "bal"
 
             elif keys[pygame.K_RIGHT] and self.pos_x < constans.WIN_X - vel - 20:
                 self.pos_x += vel
-                win.blit(Walk_Right[walkCount], (self.pos_x,self.pos_y))
-                walkCount+=1
+                win.blit(Walk_Right[step], (self.pos_x,self.pos_y))
+                step+=1
                 last_dir = "jobb"
 
             elif keys[pygame.K_UP] and self.pos_y > vel:
                 self.pos_y -= vel
-                win.blit(Walk_Up[walkCount],(self.pos_x,self.pos_y))
-                walkCount+=1
+                win.blit(Walk_Up[step],(self.pos_x,self.pos_y))
+                step+=1
                 last_dir = "fel"
 
             elif keys[pygame.K_DOWN] and self.pos_y < constans.WIN_Y -vel-20:
                 self.pos_y += vel
-                win.blit(Walk_Down[walkCount],(self.pos_x,self.pos_y))
-                walkCount+=1
+                win.blit(Walk_Down[step],(self.pos_x,self.pos_y))
+                step+=1
                 last_dir = "le"
 
-            # elif keys[pygame.K_SPACE]:
-            #     #projectiles
-            #     pass
+            elif keys[pygame.K_SPACE]:
+                return False
 
             else:
                 if last_dir == "le":
@@ -131,8 +134,11 @@ class Hero(Character):
                     win.blit(Walk_Left[0],(self.pos_x,self.pos_y))
                 elif last_dir == "jobb":
                     win.blit(Walk_Right[0],(self.pos_x,self.pos_y))
+                elif last_dir == None:
+                    win.blit(Standing,(self.pos_x,self.pos_y))
 
 
-            if walkCount > 1:
-                walkCount = 0
+            if step > 1:
+                step = 0
+            c.chest_show(win)
             pygame.display.update()

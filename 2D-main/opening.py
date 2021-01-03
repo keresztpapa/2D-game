@@ -1,6 +1,5 @@
 import pygame,sys,os,time
 
-import engine
 import char
 import game
 import constans

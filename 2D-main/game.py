@@ -6,7 +6,6 @@ import opening
 import constans
 pygame.init()
 
-bg = pygame.image.load(os.path.join('house1.gif'))
 
 #ply_spr === sprite választás
 #ply_st === player skill pointok
@@ -15,5 +14,6 @@ bg = pygame.image.load(os.path.join('house1.gif'))
 
 
 def phase_1(win ,ply_spr ,ply_st):
-    ply_st.action(win,bg,ply_spr)
+    bg = pygame.image.load(os.path.join('house1.gif'))
+    r = ply_st.action(win,bg,ply_spr)
     pygame.display.update()
