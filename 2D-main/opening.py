@@ -132,7 +132,7 @@ def char_selection(win):
 def stats(win):
     show(win)
     r = True
-    player = char.Hero(10,10,10,pos_x=80,pos_y=250)
+    player = char.Hero(50,50,50,pos_x=80,pos_y=250)
     while r:
 
         for event in pygame.event.get():
@@ -201,40 +201,40 @@ def stats(win):
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5-75 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5-25 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+100:
                     #HP--
                     print("hp-")
-                    player.set_hp(player.get_hp()-1)
-                    player.set_skill(player.get_skill()+1)
+                    player.set_hp(player.get_hp()-10)
+                    player.set_skill(player.get_skill()+10)
                     pass
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5+225 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5+275 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+100:
                     #hp++
                     print("hp+")
-                    player.set_hp(player.get_hp()+1)
-                    player.set_skill(player.get_skill()-1)
+                    player.set_hp(player.get_hp()+10)
+                    player.set_skill(player.get_skill()-10)
                     pass
 
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5-75 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*1.5 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5-25 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*1.5+100:
                     #dmg--
                     print("dmg-")
-                    player.set_dmg(player.get_dmg()-1)
-                    player.set_skill(player.get_skill()+1)
+                    player.set_dmg(player.get_dmg()-10)
+                    player.set_skill(player.get_skill()+10)
                     pass
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5+225 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*1.5 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5+275 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*1.5+100:
                     #dmg++
                     print("dmg+")
-                    player.set_dmg(player.get_dmg()+1)
-                    player.set_skill(player.get_skill()-1)
+                    player.set_dmg(player.get_dmg()+10)
+                    player.set_skill(player.get_skill()-10)
                     pass
 
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5-75 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*2 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5-25 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*2+100:
                     #deff--
                     print("deff-")
-                    player.set_deff(player.get_deff()-1)
-                    player.set_skill(player.get_skill()+1)
+                    player.set_deff(player.get_deff()-10)
+                    player.set_skill(player.get_skill()+10)
                     pass
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5+225 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*2 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5+275 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*2+100:
                     #deff++
                     print("deff+")
-                    player.set_deff(player.get_deff()+1)
-                    player.set_skill(player.get_skill()-1)
+                    player.set_deff(player.get_deff()+10)
+                    player.set_skill(player.get_skill()-10)
                     pass
             if(player.get_skill() == 0):
                 return player

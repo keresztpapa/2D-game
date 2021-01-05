@@ -15,15 +15,18 @@ class Character():
     Walk_Up = []
     Walk_Down = []
 
+
     #constructor
     def __init__(self, hp, dmg, deff, pos_x, pos_y):
         self.name = constans.NAME
-        self.hp = hp
+        self.max_hp = hp
         self.dmg = dmg
         self.deff = deff
         self.skill = 0
         self.pos_x = pos_x
         self.pos_y = pos_y
+        self.current_HP = self.max_hp
+
 
     def get_pos_x(self):
         return self.pos_x
@@ -32,7 +35,7 @@ class Character():
         return self.pos_y
 
     def get_hp(self):
-        return self.hp
+        return self.max_hp
 
     def get_dmg(self):
         return self.dmg
@@ -42,6 +45,12 @@ class Character():
 
     def get_skill(self):
         return self.skill
+
+    def get_current_hp():
+        return self.current_HP
+
+    def set_current_hp(x):
+        self.current_HP
 
     def set_hp(self, x):
         self.hp = x
@@ -55,6 +64,13 @@ class Character():
     def set_skill(self,x):
         self.skill = x
 
+
+
+    def Hp_Bar(self,window, left, top,hp):
+        minus = self.get_hp
+        #pygame.draw.rect(screen, [red, blue, green], [left, top, width, height], filled)
+        pygame.draw.rect(window,constans.WHITE,(left, top, hp, 25))
+        #self.Hp_Bar(win, 0, 0,self.get_hp()*10)
 
 class Hero(Character):
     def __init__(self,hp, dmg, deff, pos_x, pos_y):
@@ -105,6 +121,7 @@ class Hero(Character):
         while r:
             win.fill(constans.BLACK)
             win.blit(pygame.transform.scale(bg, (constans.WIN_X, constans.WIN_Y)), (0, 0))
+
 
             pygame.time.delay(80)
             for event in pygame.event.get():
@@ -159,10 +176,34 @@ class Hero(Character):
 
             if step > 1:
                 step = 0
-
+            #harc
             if random.randint(0,9) == 1 and stand == False:
-                
+                PC = Enemy(random.randint(0,20),random.randint(0,20),random.randint(0,20))
                 print("battle")
+                #flash effect before battle
+
+                for i in range(2):
+                    win.fill(constans.BLACK)
+                    pygame.display.update()
+                    time.sleep(0.1)
+                    win.blit(pygame.transform.scale(bg, (constans.WIN_X, constans.WIN_Y)), (0, 0))
+                    pygame.display.update()
+                    time.sleep(0.1)
+
+                while self.current_HP > 0 or PC.get_current_hp > 0:
+                    win.fill(constans.BLACK)
+                    #pygame.draw.rect(screen, [red, blue, green], [left, top, width, height], filled)
+                    pygame.draw.rect(win,constans.GREEN,(0, constans.WIN_Y-constans.WIN_Y/4, constans.WIN_X,constans.WIN_Y/4))
+                    opening.draw_box(win, constans.WHITE, constans.WIN_X/2, constans.WIN_Y/2, 50, 50,"helo")
+
+
+                    pygame.display.update()
+                    time.sleep(2)
             #chess_int()
 
             pygame.display.update()
+
+
+class Enemy(Character):
+    def __init__(self,hp, dmg, deff):
+        super().__init__(hp, dmg, deff, pos_x = None, pos_y = None)
