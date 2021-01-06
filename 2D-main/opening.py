@@ -31,7 +31,6 @@ def text_show(win,x,y,str):
     # set the center of the rectangular object.
     textRect.center = (x, y)
 
-
     # copying the text surface object
     # to the display surface object
     # at the center coordinate.
@@ -41,7 +40,7 @@ def text_show(win,x,y,str):
 
 #doboz létre hozása amibe mehet szöveg
 def draw_box(window, colour, left, top, width, height,str):
-    #pygame.draw.rect(screen, [red, blue, green], [left, top, width, height], filled)
+    #pygame.draw.rect(screen, [red, blue, green], [left, top, width, height], str)
     pygame.draw.rect(window,colour,(left, top, width, height))
     text_show(window, left + width/2, top + height/2,str)
     pygame.display.update()
