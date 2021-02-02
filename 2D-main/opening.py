@@ -240,7 +240,7 @@ def stats(win):
 
             #a stat- értékek kiiratása
             draw_box(win,constans.BLACK,constans.WIN_X/5,constans.WIN_Y/3-100,250,50,"Remaining points:")
-            draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3-100,40,50,str(player.get_skill()))
+            draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3-100,40,50,str(player.get_skill()//10))
             draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3,40,100,str(player.get_hp()))
             draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*1.5,40,100,str(player.get_dmg()))
             draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3*2,40,100, str(player.get_deff()))

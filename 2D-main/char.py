@@ -22,10 +22,9 @@ class Character():
         self.max_hp = hp
         self.dmg = dmg
         self.deff = deff
-        self.skill = 0
+        self.skill = 100
         self.pos_x = pos_x
         self.pos_y = pos_y
-        self.current_HP = self.max_hp
 
 
     def get_pos_x(self):
@@ -50,10 +49,10 @@ class Character():
         return self.current_HP
 
     def set_current_hp(self, x):
-        self.current_HP
+        self.current_HP = self.current_HP - x
 
     def set_hp(self, x):
-        self.hp = x
+        self.max_hp = x
 
     def set_dmg(self, x):
         self.dmg = x
