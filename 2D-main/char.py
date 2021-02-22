@@ -66,11 +66,11 @@ class Character():
 
 
 
-    def Hp_Bar(self,window, left, top,hp):
-        minus = self.get_hp
-        #pygame.draw.rect(screen, [red, blue, green], [left, top, width, height], filled)
-        pygame.draw.rect(window,constans.WHITE,(left, top, hp, 25))
-        #self.Hp_Bar(win, 0, 0,self.get_hp()*10)
+    def Hp_Bar(self,window, left, top,c_hp,max_hp):
+        #pygame.draw.rect(screen, color, [left, top, width, height], filled)
+        pygame.draw.rect(window,constans.WHITE,(left, top, (max_hp/200)*300+20, 35))
+        pygame.draw.rect(window,constans.RED,(left+10, top+5, (c_hp/200)*300, 25))
+        pygame.display.update()
 
 class Hero(Character):
     def __init__(self,hp, dmg, deff, pos_x, pos_y):
@@ -173,7 +173,7 @@ class Hero(Character):
             if step > 1:
                 step = 0
             #harc
-            if random.randint(0,9) == 1 and stand == False:
+            if random.randint(0,20) == 1 and stand == False:
                 #enemy
                 PC = Enemy(random.randint(50,150),random.randint(50,150),random.randint(50,150))
                 enemy_sprite = pygame.image.load('rouge.gif') if random.randint(0,1) == 0 else pygame.image.load('knight.gif')
@@ -192,8 +192,15 @@ class Hero(Character):
                 win.fill(constans.BLACK)
                 #pygame.draw.rect(screen, [red, blue, green], [left, top, width, height], filled)
                 pygame.draw.rect(win,constans.WHITE,(0, constans.WIN_Y-constans.WIN_Y/4, constans.WIN_X,constans.WIN_Y/4))
+                pygame.display.update()
+
                 #amig a pc nek es az ellensegnek nagyobb a hp mint 0
-                while self.get_current_hp() > 0 or PC.get_current_hp > 0:
+                while self.get_current_hp() > 0 and PC.get_current_hp() > 0:
+
+                    # Hp_Bar(window, left, top,c_hp,max_hp):
+                    self.Hp_Bar(win, 20, 45, self.get_current_hp(),self.get_hp())
+
+                    PC.Hp_Bar(win, constans.WIN_X-200, (constans.WIN_Y-constans.WIN_Y/4)-60, PC.get_current_hp(), PC.get_hp())
 
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
@@ -228,8 +235,11 @@ class Hero(Character):
                         if event.type == pygame.MOUSEBUTTONUP:
                             #attack
                             if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
-
-                                pass
+                                if random.randint(0,4) != 3:
+                                    PC.set_current_hp(self.get_dmg()/10)
+                                    print("hit")
+                                else:
+                                    print("miss")
 
                             #fortify
                             if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
@@ -244,7 +254,7 @@ class Hero(Character):
                                 pass
 
 
-                    self.set_current_hp(self.get_current_hp()-10)
+
 
             pygame.display.update()
 
