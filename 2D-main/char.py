@@ -25,6 +25,7 @@ class Character():
         self.skill = 100
         self.pos_x = pos_x
         self.pos_y = pos_y
+        self.current_HP = hp
 
 
     def get_pos_x(self):
@@ -141,24 +142,20 @@ class Hero(Character):
                 step+=1
                 last_dir = "jobb"
                 stand = False
-
             elif keys[pygame.K_UP] and self.pos_y > vel:
                 self.pos_y -= vel
                 win.blit(Walk_Up[step],(self.pos_x,self.pos_y))
                 step+=1
                 last_dir = "fel"
                 stand = False
-
             elif keys[pygame.K_DOWN] and self.pos_y < constans.WIN_Y -vel-20:
                 self.pos_y += vel
                 win.blit(Walk_Down[step],(self.pos_x,self.pos_y))
                 step+=1
                 last_dir = "le"
                 stand = False
-
             elif keys[pygame.K_SPACE]:
                 return False
-
             else:
                 stand = True
                 if last_dir == "le":
@@ -177,7 +174,8 @@ class Hero(Character):
                 step = 0
             #harc
             if random.randint(0,9) == 1 and stand == False:
-                PC = Enemy(random.randint(0,20),random.randint(0,20),random.randint(0,20))
+                #enemy
+                PC = Enemy(random.randint(50,150),random.randint(50,150),random.randint(50,150))
                 enemy_sprite = pygame.image.load('rouge.gif') if random.randint(0,1) == 0 else pygame.image.load('knight.gif')
                 print("battle")
                 #flash effect before battle
@@ -194,8 +192,8 @@ class Hero(Character):
                 win.fill(constans.BLACK)
                 #pygame.draw.rect(screen, [red, blue, green], [left, top, width, height], filled)
                 pygame.draw.rect(win,constans.WHITE,(0, constans.WIN_Y-constans.WIN_Y/4, constans.WIN_X,constans.WIN_Y/4))
-
-                while self.current_HP > 0 or PC.get_current_hp > 0:
+                #amig a pc nek es az ellensegnek nagyobb a hp mint 0
+                while self.get_current_hp() > 0 or PC.get_current_hp > 0:
 
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
@@ -228,26 +226,32 @@ class Hero(Character):
 
 
                         if event.type == pygame.MOUSEBUTTONUP:
-
+                            #attack
                             if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
-                                sys.exit()
 
+                                pass
 
+                            #fortify
                             if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
                                 pass
+
+                            #use item
                             if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
                                 pass
+
+                            #flee
                             if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
                                 pass
 
 
                     self.set_current_hp(self.get_current_hp()-10)
 
-            #chess_int()
-
             pygame.display.update()
 
 
 class Enemy(Character):
     def __init__(self,hp, dmg, deff):
-        super().__init__(hp, dmg, deff, pos_x = None, pos_y = None)
+        self.max_hp = hp
+        self.dmg = dmg
+        self.deff = deff
+        self.current_HP = hp
