@@ -203,17 +203,6 @@ class Hero(Character):
                 while self.get_current_hp() > 0 and PC.get_current_hp() > 0:
 
 
-                    #in-combat passive effect check
-                    if fortify = True:
-                        round_counter += 1
-                        #kör számlálás
-                        if round_counter > 1:
-                            round_counter = 0
-                            fortify = False
-                            self.set_deff
-                        else:
-                            round_counter += 1
-
                     #my hp bar
                     # Hp_Bar(window, left, top,c_hp,max_hp):
                     self.Hp_Bar(win, 20, 45, self.get_current_hp(),self.get_hp())
@@ -273,6 +262,16 @@ class Hero(Character):
                                 pass
 
 
+                    #in-combat passive effect check
+                    if fortify == True:
+                        round_counter += 1
+                        #kör számlálás
+                        if round_counter > 1:
+                            round_counter = 0
+                            fortify = False
+                            self.set_deff()
+                        else:
+                            round_counter += 1
 
 
             pygame.display.update()
