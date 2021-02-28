@@ -201,12 +201,14 @@ def stats(win):
                     #HP--
                     print("hp-")
                     player.set_hp(player.get_hp()-10)
+                    player.set_current_hp(player.get_current_hp()-10)
                     player.set_skill(player.get_skill()+10)
                     pass
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5+225 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5+275 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+100:
                     #hp++
                     print("hp+")
                     player.set_hp(player.get_hp()+10)
+                    player.set_current_hp(player.get_current_hp()+10)
                     player.set_skill(player.get_skill()-10)
                     pass
 
