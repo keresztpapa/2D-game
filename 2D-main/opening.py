@@ -194,8 +194,6 @@ def stats(win):
                     draw_box(win,constans.WHITE,constans.WIN_X/5+225,constans.WIN_Y/3*2,50,100," + ")
                 else:
                     draw_box(win,constans.BLACK,constans.WIN_X/5+225,constans.WIN_Y/3*2,50,100," + ")
-
-
             if event.type == pygame.MOUSEBUTTONUP:
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5-75 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5-25 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+100:
                     #HP--
@@ -239,7 +237,6 @@ def stats(win):
                     pass
             if(player.get_skill() == 0):
                 return player
-
             #a stat- értékek kiiratása
             draw_box(win,constans.BLACK,constans.WIN_X/5,constans.WIN_Y/3-100,250,50,"Remaining points:")
             draw_box(win,constans.BLACK,constans.WIN_X/5+300,constans.WIN_Y/3-100,40,50,str(player.get_skill()//10))

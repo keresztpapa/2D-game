@@ -207,73 +207,74 @@ class Hero(Character):
                     # Hp_Bar(window, left, top,c_hp,max_hp):
                     self.Hp_Bar(win, 20, 45, self.get_current_hp(),self.get_hp())
                     # enemys hp bar
-                    PC.Hp_Bar(win, constans.WIN_X-200, (constans.WIN_Y-constans.WIN_Y/4)-60, PC.get_current_hp(), PC.get_hp())
+                    PC.Hp_Bar(win, constans.WIN_X-300, (constans.WIN_Y-constans.WIN_Y/4)-60, PC.get_current_hp(), PC.get_hp())
 
-                    for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
-                            pygame.quit()
-                            sys.exit()
+                    event = pygame.event.wait()
 
-                        if event.type == pygame.MOUSEMOTION:
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
 
-                            if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
-                                opening.draw_box(win, constans.ORANGE, (constans.WIN_X/2-constans.WIN_X/4), (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"attack")
-                            else:
-                                opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4), (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"attack")
+                    if event.type == pygame.MOUSEMOTION:
 
-
-                            if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
-                                opening.draw_box(win, constans.ORANGE, (constans.WIN_X/2-constans.WIN_X/4), (constans.WIN_Y/2+constans.WIN_Y/4)+90, 200, 50,"fortify")
-                            else:
-                                opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4), (constans.WIN_Y/2+constans.WIN_Y/4)+90, 200, 50,"fortify")
-
-                            if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
-                                opening.draw_box(win, constans.ORANGE, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"use item ")
-                            else:
-                                opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"use item ")
-
-
-                            if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
-                                opening.draw_box(win, constans.ORANGE, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+90, 200, 50,"flee")
-                            else:
-                                opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+90, 200, 50,"flee")
-
-
-                        if event.type == pygame.MOUSEBUTTONUP:
-                            #attack
-                            if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
-                                if random.randint(0,4) != 3:
-                                    PC.set_current_hp(PC.get_current_hp() - self.get_dmg()/10)
-                                    print("hit")
-                                else:
-                                    print("miss")
-
-                            #fortify
-                            if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
-                                fortify = True
-
-
-                            #use item
-                            if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
-                                pass
-
-                            #flee
-                            if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
-                                pass
-
-
-                    #in-combat passive effect check
-                    if fortify == True:
-                        round_counter += 1
-                        #kör számlálás
-                        if round_counter > 1:
-                            round_counter = 0
-                            fortify = False
-                            self.set_deff()
+                        if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
+                            opening.draw_box(win, constans.ORANGE, (constans.WIN_X/2-constans.WIN_X/4), (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"attack")
                         else:
-                            round_counter += 1
+                            opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4), (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"attack")
 
 
+                        if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
+                            opening.draw_box(win, constans.ORANGE, (constans.WIN_X/2-constans.WIN_X/4), (constans.WIN_Y/2+constans.WIN_Y/4)+90, 200, 50,"fortify")
+                        else:
+                            opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4), (constans.WIN_Y/2+constans.WIN_Y/4)+90, 200, 50,"fortify")
+
+                        if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
+                            opening.draw_box(win, constans.ORANGE, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"use item ")
+                        else:
+                            opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"use item ")
+
+
+                        if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
+                            opening.draw_box(win, constans.ORANGE, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+90, 200, 50,"flee")
+                        else:
+                            opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+90, 200, 50,"flee")
+
+
+                    if event.type == pygame.MOUSEBUTTONUP:
+                        #attack
+                        if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
+                            if random.randint(0,4) != 3:
+                                PC.set_current_hp(PC.get_current_hp() - self.get_dmg()/10)
+                                print("hit")
+                            else:
+                                print("miss")
+
+                        #fortify
+                        if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4) and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+200 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
+                            fortify = True
+                            self.set_deff(self.get_deff()+20)
+
+                        #use item
+                        if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
+                            pass
+
+                        #flee
+                        if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
+                            pass
+
+
+                        #in-combat passive effect check
+                        if fortify == True:
+                            #kör számlálás
+                            if round_counter > 1:
+                                round_counter = 0
+                                fortify = False
+                                self.set_deff(self.get_deff()-20)
+                            else:
+                                round_counter += 1
+                        print(fortify)
+                        print(self.get_deff())
+                        print(f"round: {round_counter}")
             pygame.display.update()
 
 
