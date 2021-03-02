@@ -26,6 +26,7 @@ class Character():
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.current_HP = hp
+        self.potion_count = 3
 
 
     def get_pos_x(self):
@@ -64,6 +65,11 @@ class Character():
     def set_skill(self,x):
         self.skill = x
 
+    def get_potion(self):
+        return self.potion_count
+
+    def set_potion(self,x):
+        self.potion_count = x
 
 
     def Hp_Bar(self,window, left, top,c_hp,max_hp):
@@ -178,8 +184,8 @@ class Hero(Character):
                 PC = Enemy(random.randint(50,150),random.randint(50,150),random.randint(50,150))
                 enemy_sprite = pygame.image.load('rouge.gif') if random.randint(0,1) == 0 else pygame.image.load('knight.gif')
                 print("battle")
-                #flash effect before battle
 
+                #flash effect before battle
                 for i in range(2):
                     win.fill(constans.BLACK)
                     pygame.display.update()
@@ -196,7 +202,7 @@ class Hero(Character):
 
 
 
-
+                fled = None
                 fortify = False
                 round_counter = 0
                 #amig a pc nek es az ellensegnek nagyobb a hp mint 0
@@ -229,9 +235,10 @@ class Hero(Character):
                             opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4), (constans.WIN_Y/2+constans.WIN_Y/4)+90, 200, 50,"fortify")
 
                         if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
-                            opening.draw_box(win, constans.ORANGE, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"use item ")
+                            opening.draw_box(win, constans.ORANGE, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"use potion ")
                         else:
-                            opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"use item ")
+                            opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4)+400, (constans.WIN_Y/2+constans.WIN_Y/4)+20, 200, 50,"use potion ")
+                            opening.draw_box(win, constans.RED, (constans.WIN_X/2-constans.WIN_X/4)+600, (constans.WIN_Y/2+constans.WIN_Y/4)+20, 50, 50, str(self.get_potion()))
 
 
                         if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
@@ -254,13 +261,20 @@ class Hero(Character):
                             fortify = True
                             self.set_deff(self.get_deff()+20)
 
-                        #use item
+                        #use potion
                         if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
-                            pass
+                            self.set_potion(self.get_potion()-1)
+                            if self.get_current_hp()+20 < self.get_hp():
+                                self.set_current_hp(self.get_hp()) 
+                            else:
+                                self.set_current_hp(self.get_current_hp()+20)
 
                         #flee
                         if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
-                            pass
+                            if random.randint(0,11) == 5:
+                                PC.set_current_hp(0)
+                                fled = True
+                                print("fled")
 
 
                         #in-combat passive effect check
@@ -272,6 +286,7 @@ class Hero(Character):
                                 self.set_deff(self.get_deff()-20)
                             else:
                                 round_counter += 1
+
                         print(fortify)
                         print(self.get_deff())
                         print(f"round: {round_counter}")
