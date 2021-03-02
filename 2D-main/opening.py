@@ -116,15 +116,22 @@ def char_selection(win):
 
 #egér mozgásra figyel:// HOVER css -be, nem tudom magyarul
             if event.type == pygame.MOUSEMOTION:
+                mage = pygame.image.load('mage_f1.gif')
+                witch = pygame.image.load('witch_f1.gif')
+
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/3 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= constans.WIN_X/3+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+200:
-                    draw_box(win,constans.WHITE,constans.WIN_X/3,constans.WIN_Y/3,100,200,"bal")
+                    draw_box(win,constans.WHITE,constans.WIN_X/3,constans.WIN_Y/3,100,200,"mage")
+                    win.blit(pygame.transform.scale(mage,(80, 100)), (constans.WIN_X/3-100,constans.WIN_Y/3))
                 else:
-                    draw_box(win,constans.BLACK,constans.WIN_X/3,constans.WIN_Y/3,100,200,"bal")
+                    draw_box(win,constans.BLACK,constans.WIN_X/3,constans.WIN_Y/3,100,200,"mage")
+                    win.blit(pygame.transform.scale(mage,(80, 100)), (constans.WIN_X/3-100,constans.WIN_Y/3))
 
                 if pygame.mouse.get_pos()[0] >= (constans.WIN_X/3)*2 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/3)*2+100 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3+200:
-                    draw_box(win,constans.WHITE,(constans.WIN_X/3)*2,constans.WIN_Y/3,125,200,"jobb")
+                    draw_box(win,constans.WHITE,(constans.WIN_X/3)*2,constans.WIN_Y/3,125,200,"witch")
+                    win.blit(pygame.transform.scale(witch,(80, 100)), ((constans.WIN_X/3)*2-125,constans.WIN_Y/3))
                 else:
-                    draw_box(win,constans.BLACK,(constans.WIN_X/3)*2,constans.WIN_Y/3,125,200,"jobb")
+                    draw_box(win,constans.BLACK,(constans.WIN_X/3)*2,constans.WIN_Y/3,125,200,"witch")
+                    win.blit(pygame.transform.scale(witch,(80, 100)), ((constans.WIN_X/3)*2-125,constans.WIN_Y/3))
     return char_exist
 
 
@@ -227,12 +234,14 @@ def stats(win):
                     #deff--
                     print("deff-")
                     player.set_deff(player.get_deff()-10)
+                    player.set_min_deff(player.get_min_deff()-10)
                     player.set_skill(player.get_skill()+10)
                     pass
                 if pygame.mouse.get_pos()[0] >= constans.WIN_X/5+225 and pygame.mouse.get_pos()[1] >= constans.WIN_Y/3*2 and pygame.mouse.get_pos()[0] <= constans.WIN_X/5+275 and pygame.mouse.get_pos()[1]<=constans.WIN_Y/3*2+100:
                     #deff++
                     print("deff+")
                     player.set_deff(player.get_deff()+10)
+                    player.set_min_deff(player.get_min_deff()+10)
                     player.set_skill(player.get_skill()-10)
                     pass
             if(player.get_skill() == 0):

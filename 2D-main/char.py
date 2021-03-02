@@ -27,6 +27,7 @@ class Character():
         self.pos_y = pos_y
         self.current_HP = hp
         self.potion_count = 3
+        self.min_deff = deff
 
 
     def get_pos_x(self):
@@ -71,6 +72,11 @@ class Character():
     def set_potion(self,x):
         self.potion_count = x
 
+    def set_min_deff(self,x):
+        self.min_deff = x
+
+    def get_min_deff(self):
+        return self.min_deff
 
     def Hp_Bar(self,window, left, top,c_hp,max_hp):
         #pygame.draw.rect(screen, color, [left, top, width, height], filled)
@@ -198,6 +204,8 @@ class Hero(Character):
                 win.fill(constans.BLACK)
                 #pygame.draw.rect(screen, [red, blue, green], [left, top, width, height], filled)
                 pygame.draw.rect(win,constans.WHITE,(0, constans.WIN_Y-constans.WIN_Y/4, constans.WIN_X,constans.WIN_Y/4))
+                win.blit(pygame.transform.scale(Standing,(80, 100)), (constans.WIN_X-400,80))
+                win.blit(pygame.transform.scale(enemy_sprite,(80, 100)), (90,300))
                 pygame.display.update()
 
 
@@ -213,7 +221,7 @@ class Hero(Character):
                     # Hp_Bar(window, left, top,c_hp,max_hp):
                     self.Hp_Bar(win, 20, 45, self.get_current_hp(),self.get_hp())
                     # enemys hp bar
-                    PC.Hp_Bar(win, constans.WIN_X-300, (constans.WIN_Y-constans.WIN_Y/4)-60, PC.get_current_hp(), PC.get_hp())
+                    PC.Hp_Bar(win, constans.WIN_X-400, (constans.WIN_Y-constans.WIN_Y/4)-60, PC.get_current_hp(), PC.get_hp())
 
                     event = pygame.event.wait()
 
@@ -263,11 +271,12 @@ class Hero(Character):
 
                         #use potion
                         if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+20 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+70:
-                            self.set_potion(self.get_potion()-1)
-                            if self.get_current_hp()+20 < self.get_hp():
-                                self.set_current_hp(self.get_hp()) 
-                            else:
-                                self.set_current_hp(self.get_current_hp()+20)
+                            if self.get_potion() > 0:
+                                self.set_potion(self.get_potion()-1)
+                                if self.get_current_hp()+20 > self.get_hp():
+                                    self.set_current_hp(self.get_hp())
+                                else:
+                                    self.set_current_hp(self.get_current_hp()+20)
 
                         #flee
                         if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
@@ -283,13 +292,16 @@ class Hero(Character):
                             if round_counter > 1:
                                 round_counter = 0
                                 fortify = False
-                                self.set_deff(self.get_deff()-20)
+                                self.set_deff(self.get_min_deff())
                             else:
                                 round_counter += 1
 
                         print(fortify)
                         print(self.get_deff())
                         print(f"round: {round_counter}")
+
+                    #PC.action()
+
             pygame.display.update()
 
 
@@ -299,3 +311,6 @@ class Enemy(Character):
         self.dmg = dmg
         self.deff = deff
         self.current_HP = hp
+
+    def action(self, ply_hp, ply_def, ply_att):
+        pass
