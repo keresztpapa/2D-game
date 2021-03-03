@@ -215,6 +215,8 @@ class Hero(Character):
                 round_counter = 0
                 round_counter_enemy = 0
                 fortify_enemy = False
+                self.set_current_hp(self.get_hp())
+                self.set_potion(3)
                 #amig a pc nek es az ellensegnek nagyobb a hp mint 0
                 while self.get_current_hp() > 0 and PC.get_current_hp() > 0:
 
@@ -331,6 +333,8 @@ class Hero(Character):
                         print(fortify)
                         print(self.get_deff())
                         print(f"round: {round_counter}")
+
+
 
 
             pygame.display.update()
