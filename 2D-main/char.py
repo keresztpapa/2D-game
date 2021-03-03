@@ -279,6 +279,8 @@ class Hero(Character):
                                     self.set_current_hp(self.get_hp())
                                 else:
                                     self.set_current_hp(self.get_current_hp()+20)
+                            else:
+                                print("no more potion available")
 
                         #flee
                         if pygame.mouse.get_pos()[0] >= (constans.WIN_X/2-constans.WIN_X/4)+400 and pygame.mouse.get_pos()[1] >= (constans.WIN_Y/2+constans.WIN_Y/4)+90 and pygame.mouse.get_pos()[0] <= (constans.WIN_X/2-constans.WIN_X/4)+600 and pygame.mouse.get_pos()[1]<=(constans.WIN_Y/2+constans.WIN_Y/4)+140:
@@ -303,7 +305,7 @@ class Hero(Character):
                         act_list = []
                         #attack
                         if len(act_list) < 1 and PC.get_current_hp() >= PC.get_current_hp()*0.8:
-                            self.set_current_hp(self.get_current_hp() - PC.get_dmg())
+                            self.set_current_hp(self.get_current_hp() - PC.get_dmg()/10)
                             act_list.append("attack")
                         #heal
                         elif PC.get_current_hp() >= PC.get_current_hp()*0.8:
@@ -312,8 +314,12 @@ class Hero(Character):
                         else:
                             fortify_enemy = True
                             PC.set_deff(PC.get_deff()+20)
+                            if len(act_list) >= 3:
+                                act_list.clear()
 
-                        #in-combat passive effect check
+
+
+                        #in-combat passive effect check for the enemy
                         if fortify_enemy == True:
                             #kör számlálás
                             if round_counter_enemy > 1:
