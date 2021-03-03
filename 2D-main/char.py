@@ -187,7 +187,7 @@ class Hero(Character):
             #harc
             if random.randint(0,20) == 1 and stand == False:
                 #enemy
-                PC = Enemy(random.randint(50,150),random.randint(50,150),random.randint(50,150))
+                PC = Enemy(random.randint(50,150),random.randint(50,100),random.randint(50,150))
                 enemy_sprite = pygame.image.load('rouge.gif') if random.randint(0,1) == 0 else pygame.image.load('knight.gif')
                 print("battle")
 
@@ -213,6 +213,8 @@ class Hero(Character):
                 fled = None
                 fortify = False
                 round_counter = 0
+                round_counter_enemy = 0
+                fortify_enemy = False
                 #amig a pc nek es az ellensegnek nagyobb a hp mint 0
                 while self.get_current_hp() > 0 and PC.get_current_hp() > 0:
 
@@ -296,11 +298,34 @@ class Hero(Character):
                             else:
                                 round_counter += 1
 
+
+                        #röhzitem az action -öket, visszamenőleges keresésre
+                        act_list = []
+                        #attack
+                        if len(act_list) < 1 and PC.get_current_hp() >= PC.get_current_hp()*0.8:
+                            self.set_current_hp(self.get_current_hp() - PC.get_dmg())
+                            act_list.append("attack")
+                        #heal
+                        elif PC.get_current_hp() >= PC.get_current_hp()*0.8:
+                            PC.set_current_hp(PC.get_current_hp()*0.2)
+                            act_list.append("heal")
+                        else:
+                            fortify_enemy = True
+                            PC.set_deff(PC.get_deff()+20)
+
+                        #in-combat passive effect check
+                        if fortify_enemy == True:
+                            #kör számlálás
+                            if round_counter_enemy > 1:
+                                round_counter_enemy = 0
+                                fortify_enemy = False
+                                PC.set_deff(PC.get_min_deff())
+                            else:
+                                round_counter_enemy += 1
                         print(fortify)
                         print(self.get_deff())
                         print(f"round: {round_counter}")
 
-                    #PC.action()
 
             pygame.display.update()
 
@@ -311,6 +336,3 @@ class Enemy(Character):
         self.dmg = dmg
         self.deff = deff
         self.current_HP = hp
-
-    def action(self, ply_hp, ply_def, ply_att):
-        pass
